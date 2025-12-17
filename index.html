@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SealsMall - Global Sealing Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e88e5;
+            --primary-hover: #1565c0;
+            --text: #333;
+            --border: #e0e0e0;
+            --bg: #f5f5f5;
+            --white: #fff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .lang-select {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            cursor: pointer;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .filters {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            background: var(--white);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-specs {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .qty-selector {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            flex: 2;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: right 0.3s;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .cart-header {
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-items {
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-remove {
+            cursor: pointer;
+            color: #ff6b6b;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .cart-total {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .checkout-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            float: right;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .nav {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">🔒 SealsMall</div>
+                <div class="nav">
+                    <select class="lang-select" id="langSelect" onchange="changeLanguage()">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                        <option value="de">Deutsch</option>
+                        <option value="ja">日本語</option>
+                        <option value="es">Español</option>
+                    </select>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Products Section -->
+        <section class="products-section">
+            <h1 class="section-title" id="productsTitle">Our Products</h1>
+
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+                <button class="filter-btn" onclick="filterProducts('o-ring')">O-Rings</button>
+                <button class="filter-btn" onclick="filterProducts('oil-seal')">Oil Seals</button>
+                <button class="filter-btn" onclick="filterProducts('guide-ring')">Guide Rings</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="productsGrid"></div>
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <span class="cart-close" onclick="toggleCart()">✕</span>
+        <div class="cart-header">
+            <h2 id="cartTitle">Shopping Cart</h2>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span id="totalLabel">Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()" id="checkoutBtn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">✕</span>
+            <h2 class="modal-title" id="checkoutTitle">Checkout</h2>
+            <form id="checkoutForm" onsubmit="handleCheckout(event)">
+                <div class="form-group">
+                    <label class="form-label" id="nameLabel">Full Name</label>
+                    <input type="text" class="form-input" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="emailLabel">Email</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="addressLabel">Address</label>
+                    <input type="text" class="form-input" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="phoneLabel">Phone</label>
+                    <input type="tel" class="form-input" name="phone" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; padding: 1rem;" id="payBtn">Pay with Stripe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 SealsMall. All rights reserved.</p>
+        <p id="footerText">Professional Sealing Solutions for Global Markets</p>
+    </footer>
+
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        // Multi-language data
+        const translations = {
+            en: {
+                productsTitle: 'Our Products',
+                cartTitle: 'Shopping Cart',
+                totalLabel: 'Total:',
+                checkoutTitle: 'Checkout',
+                nameLabel: 'Full Name',
+                emailLabel: 'Email',
+                addressLabel: 'Address',
+                phoneLabel: 'Phone',
+                payBtn: 'Pay with Stripe',
+                footerText: 'Professional Sealing Solutions for Global Markets',
+                emptyCart: 'Your cart is empty'
+            },
+            zh: {
+                productsTitle: '产品列表',
+                cartTitle: '购物车',
+                totalLabel: '总计:',
+                checkoutTitle: '结账',
+                nameLabel: '姓名',
+                emailLabel: '邮箱',
+                addressLabel: '地址',
+                phoneLabel: '电话',
+                payBtn: '使用 Stripe 支付',
+                footerText: '专业密封解决方案提供商',
+                emptyCart: '您的购物车为空'
+            },
+            de: {
+                productsTitle: 'Unsere Produkte',
+                cartTitle: 'Warenkorb',
+                totalLabel: 'Gesamt:',
+                checkoutTitle: 'Kasse',
+                nameLabel: 'Vollständiger Name',
+                emailLabel: 'Email',
+                addressLabel: 'Adresse',
+                phoneLabel: 'Telefon',
+                payBtn: 'Mit Stripe bezahlen',
+                footerText: 'Professionelle Dichtungslösungen für globale Märkte',
+                emptyCart: 'Ihr Warenkorb ist leer'
+            },
+            ja: {
+                productsTitle: '商品',
+                cartTitle: 'ショッピングカート',
+                totalLabel: '合計:',
+                checkoutTitle: 'チェックアウト',
+                nameLabel: '氏名',
+                emailLabel: 'メール',
+                addressLabel: '住所',
+                phoneLabel: '電話',
+                payBtn: 'Stripe で支払う',
+                footerText: 'グローバル市場向けの専門的なシール対策',
+                emptyCart: 'カートは空です'
+            },
+            es: {
+                productsTitle: 'Nuestros Productos',
+                cartTitle: 'Carrito de Compras',
+                totalLabel: 'Total:',
+                checkoutTitle: 'Pagar',
+                nameLabel: 'Nombre completo',
+                emailLabel: 'Correo electrónico',
+                addressLabel: 'Dirección',
+                phoneLabel: 'Teléfono',
+                payBtn: 'Pagar con Stripe',
+                footerText: 'Soluciones profesionales de sellado para mercados globales',
+                emptyCart: 'Su carrito está vacío'
+            }
+        };
+
+        // Product data
+        const products = [
+            {
+                id: 1,
+                nameEn: 'O-Ring FKM AS 568A',
+                nameZh: 'O型圈 氟橡胶 FKM AS 568A',
+                nameDe: 'O-Ring FKM AS 568A',
+                nameJa: 'Oリング FKM AS 568A',
+                nameEs: 'Anillo O FKM AS 568A',
+                category: 'o-ring',
+                price: 12.99,
+                specs: 'Temp Range: -20°C to +200°C',
+                image: '⭕'
+            },
+            {
+                id: 2,
+                nameEn: 'O-Ring FFKM',
+                nameZh: '全氟醚橡胶O型圈',
+                nameDe: 'O-Ring FFKM',
+                nameJa: 'Oリング FFKM',
+                nameEs: 'Anillo O FFKM',
+                category: 'o-ring',
+                price: 24.99,
+                specs: 'Temp Range: -25°C to +325°C',
+                image: '⭕'
+            },
+            {
+                id: 3,
+                nameEn: 'O-Ring NBR',
+                nameZh: '丁腈橡胶O型圈',
+                nameDe: 'O-Ring NBR',
+                nameJa: 'Oリング NBR',
+                nameEs: 'Anillo O NBR',
+                category: 'o-ring',
+                price: 8.99,
+                specs: 'Temp Range: -30°C to +100°C',
+                image: '⭕'
+            },
+            {
+                id: 4,
+                nameEn: 'Hydraulic Cylinder Seal',
+                nameZh: '液压油缸密封环',
+                nameDe: 'Hydraulikzylinder-Dichtung',
+                nameJa: '油圧シリンダーシール',
+                nameEs: 'Sello de Cilindro Hidráulico',
+                category: 'guide-ring',
+                price: 45.99,
+                specs: 'Phenolic Laminate Support Ring',
+                image: '🔧'
+            },
+            {
+                id: 5,
+                nameEn: 'Floating Oil Seal',
+                nameZh: '浮动油封',
+                nameDe: 'Schwimmendes Öldichtung',
+                nameJa: 'フローティングオイルシール',
+                nameEs: 'Sello de Aceite Flotante',
+                category: 'oil-seal',
+                price: 35.99,
+                specs: 'Double-Lip Design',
+                image: '🛡️'
+            },
+            {
+                id: 6,
+                nameEn: 'Skeleton Oil Seal',
+                nameZh: '骨架油封',
+                nameDe: 'Skelett-Öldichtung',
+                nameJa: 'スケルトンオイルシール',
+                nameEs: 'Sello de Aceite de Esqueleto',
+                category: 'oil-seal',
+                price: 18.99,
+                specs: 'NBR / FKM Material',
+                image: '🛡️'
+            }
+        ];
+
+        // Cart state
+        let cart = [];
+        let currentLanguage = 'en';
+
+        // Initialize
+        function init() {
+            renderProducts('all');
+            updateCartUI();
+        }
+
+        // Render products
+        function renderProducts(category) {
+            const filtered = category === 'all' 
+                ? products 
+                : products.filter(p => p.category === category);
+
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = filtered.map(product => {
+                const name = product[`name${currentLanguage.toUpperCase().replace('EN', 'En').replace('ZH', 'Zh').replace('DE', 'De').replace('JA', 'Ja').replace('ES', 'Es')}`] || product.nameEn;
+                return `
+                    <div class="product-card">
+                        <div class="product-image">${product.image}</div>
+                        <div class="product-info">
+                            <div class="product-name">${name}</div>
+                            <div class="product-specs">${product.specs}</div>
+                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            <div class="product-actions">
+                                <input type="number" class="qty-selector" value="1" min="1" id="qty-${product.id}">
+                                <button class="btn btn-primary" onclick="addToCart(${product.id})">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter products
+        function filterProducts(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts(category);
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const qty = parseInt(document.getElementById(`qty-${productId}`).value);
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ ...product, qty });
+            }
+
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').textContent = count;
+
+            const itemsHtml = cart.length === 0 
+                ? `<div class="empty-state">${translations[currentLanguage].emptyCart}</div>`
+                : cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <strong>${item[`name${currentLanguage.toUpperCase().replace('EN', 'En').replace('ZH', 'Zh').replace('DE', 'De').replace('JA', 'Ja').replace('ES', 'Es')}`] || item.nameEn}</strong>
+                            <div>$${item.price} × ${item.qty}</div>
+                        </div>
+                        <span class="cart-item-remove" onclick="removeFromCart(${item.id})">×</span>
+                    </div>
+                `).join('');
+
+            document.getElementById('cartItems').innerHTML = itemsHtml;
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Toggle cart
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+        }
+
+        // Change language
+        function changeLanguage() {
+            currentLanguage = document.getElementById('langSelect').value;
+            
+            // Update UI text
+            const t = translations[currentLanguage];
+            document.getElementById('productsTitle').textContent = t.productsTitle;
+            document.getElementById('cartTitle').textContent = t.cartTitle;
+            document.getElementById('totalLabel').textContent = t.totalLabel;
+            document.getElementById('checkoutTitle').textContent = t.checkoutTitle;
+            document.getElementById('nameLabel').textContent = t.nameLabel;
+            document.getElementById('emailLabel').textContent = t.emailLabel;
+            document.getElementById('addressLabel').textContent = t.addressLabel;
+            document.getElementById('phoneLabel').textContent = t.phoneLabel;
+            document.getElementById('payBtn').textContent = t.payBtn;
+            document.getElementById('footerText').textContent = t.footerText;
+
+            // Re-render products
+            renderProducts('all');
+            updateCartUI();
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Please add items to cart');
+                return;
+            }
+            document.getElementById('checkoutModal').classList.add('open');
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('checkoutModal').classList.remove('open');
+        }
+
+        // Handle checkout with Stripe
+        async function handleCheckout(e) {
+            e.preventDefault();
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0) * 100; // Convert to cents
+
+            // Create checkout session (you'll need a backend for this)
+            // For now, redirect to Stripe payment page
+            const items = cart.map(item => ({
+                name: item.nameEn,
+                amount: Math.round(item.price * 100),
+                currency: 'usd',
+                quantity: item.qty
+            }));
+
+            // This is a simplified demo - in production you'd call your backend
+            alert(`Total: $${(total/100).toFixed(2)}\n\nIn production, this would redirect to Stripe payment page.`);
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
