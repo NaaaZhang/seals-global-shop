@@ -542,325 +542,315 @@
             }
         };
 
-       // Product data
-const products = [
-  // ID 50002–50005 全氟醚橡胶 FFKM O型圈
-  {
-    id: 50002,
-    sku: 'Z1028-CS5.33',
-    category: 'o-ring',
-    brand: 'markez',
-    nameZh: 'O型圈 截面直径5.33mm 全氟醚橡胶 黑色 75ShoreA Z1028',
-    nameEn: 'O-Ring CS 5.33 mm FFKM Black 75ShoreA Z1028',
-    material: 'FFKM 75 Shore A (black)',
-    temp: '-15℃ ~ +260℃',
-    pressure: 'Static sealing, high chemical resistance',
-    size: 'CS 5.33 mm',
-    descZh: '全氟醚橡胶O型圈，适用于强腐蚀性化学介质和高温工况，适合作为关键部位的长期密封解决方案。',
-    descEn: 'FFKM O-ring for aggressive chemicals and high temperature applications, suitable for critical long-life sealing.',
-    price: 10.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50003,
-    sku: 'Z1028-CS3.53',
-    category: 'o-ring',
-    brand: 'markez',
-    nameZh: 'O型圈 截面直径3.53mm 全氟醚橡胶 黑色 75ShoreA Z1028',
-    nameEn: 'O-Ring CS 3.53 mm FFKM Black 75ShoreA Z1028',
-    material: 'FFKM 75 Shore A (black)',
-    temp: '-15℃ ~ +260℃',
-    pressure: 'Static sealing, high chemical resistance',
-    size: 'CS 3.53 mm',
-    descZh: '全氟醚橡胶O型圈，适用于高温、高真空及强腐蚀工况，可替代进口品牌同类产品。',
-    descEn: 'FFKM O-ring for high temperature, vacuum and corrosive media, suitable as an alternative to major imported brands.',
-    price: 8.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50004,
-    sku: 'Z1028-CS2.62',
-    category: 'o-ring',
-    brand: 'markez',
-    nameZh: 'O型圈 截面直径2.62mm 全氟醚橡胶 黑色 75ShoreA Z1028',
-    nameEn: 'O-Ring CS 2.62 mm FFKM Black 75ShoreA Z1028',
-    material: 'FFKM 75 Shore A (black)',
-    temp: '-15℃ ~ +260℃',
-    pressure: 'Static sealing, high chemical resistance',
-    size: 'CS 2.62 mm',
-    descZh: '小截面全氟醚O型圈，适用于精密阀件、分析仪器等空间受限部位的密封。',
-    descEn: 'Small cross-section FFKM O-ring for precise valves and analyzers where space is limited.',
-    price: 7.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50005,
-    sku: 'Z1028-CS1.78',
-    category: 'o-ring',
-    brand: 'markez',
-    nameZh: 'O型圈 截面直径1.78mm 全氟醚橡胶 黑色 75ShoreA Z1028',
-    nameEn: 'O-Ring CS 1.78 mm FFKM Black 75ShoreA Z1028',
-    material: 'FFKM 75 Shore A (black)',
-    temp: '-15℃ ~ +260℃',
-    pressure: 'Static sealing, high chemical resistance',
-    size: 'CS 1.78 mm',
-    descZh: '微小截面全氟醚O型圈，适用于超小沟槽结构和对耐介质性能要求极高的密封位置。',
-    descEn: 'Micro cross-section FFKM O-ring for very small grooves and applications requiring extreme chemical resistance.',
-    price: 6.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-
-  // ID 50006–50007 硅橡胶 VMQ O型圈
-  {
-    id: 50006,
-    sku: 'GJ7048-CS5.33',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径5.33mm 硅橡胶 黑色 70ShoreA GJ7048',
-    nameEn: 'O-Ring CS 5.33 mm VMQ Black 70ShoreA GJ7048',
-    material: 'VMQ 70 Shore A (black)',
-    temp: '-50℃ ~ +200℃',
-    pressure: 'Static sealing, general purpose',
-    size: 'CS 5.33 mm',
-    descZh: '硅橡胶O型圈，低温柔性好，适用于食品、医疗及电子设备等高洁净要求工况。',
-    descEn: 'Silicone rubber O-ring with excellent low temperature flexibility, suitable for food, medical and electronic applications.',
-    price: 2.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50007,
-    sku: 'GJ7048-CS3.53',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径3.53mm 硅橡胶 黑色 70ShoreA GJ7048',
-    nameEn: 'O-Ring CS 3.53 mm VMQ Black 70ShoreA GJ7048',
-    material: 'VMQ 70 Shore A (black)',
-    temp: '-50℃ ~ +200℃',
-    pressure: 'Static sealing, general purpose',
-    size: 'CS 3.53 mm',
-    descZh: '中等截面硅橡胶O型圈，适用于低温环境和对耐候性要求较高的密封应用。',
-    descEn: 'Medium cross-section silicone O-ring for low temperature and weather-resistant sealing applications.',
-    price: 1.5,
-    currency: 'USD',
-    image: '⭕'
-  },
-
-  // ID 50008–50009 聚氨酯 PU O型圈
-  {
-    id: 50008,
-    sku: 'PU9068-CS5.33',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径5.33mm 聚氨酯 红色 95ShoreA PU9068',
-    nameEn: 'O-Ring CS 5.33 mm Polyurethane Red 95ShoreA PU9068',
-    material: 'Polyurethane 95 Shore A (red)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'High pressure, high wear resistance',
-    size: 'CS 5.33 mm',
-    descZh: '高硬度聚氨酯O型圈，耐磨损、耐挤出性能优异，适用于高压液压系统的动态密封。',
-    descEn: 'High hardness polyurethane O-ring with excellent wear and extrusion resistance for high pressure hydraulic dynamic sealing.',
-    price: 2.5,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50009,
-    sku: 'PU9068-CS3.53',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径3.53mm 聚氨酯 红色 95ShoreA PU9068',
-    nameEn: 'O-Ring CS 3.53 mm Polyurethane Red 95ShoreA PU9068',
-    material: 'Polyurethane 95 Shore A (red)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'High pressure, high wear resistance',
-    size: 'CS 3.53 mm',
-    descZh: '小截面聚氨酯O型圈，适合空间有限且存在一定往复运动或冲击压力的密封位置。',
-    descEn: 'Small cross-section polyurethane O-ring for compact spaces with reciprocating motion or pressure spikes.',
-    price: 2.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-
-  // ID 50010–50012 聚四氟乙烯 PTFE O型圈
-  {
-    id: 50010,
-    sku: 'SF6084-CS3.53',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径3.53mm 聚四氟乙烯 白色 SF6084',
-    nameEn: 'O-Ring CS 3.53 mm PTFE White SF6084',
-    material: 'PTFE (approx. 60 Shore D, white)',
-    temp: '-200℃ ~ +200℃',
-    pressure: 'Static sealing, high chemical and temperature resistance',
-    size: 'CS 3.53 mm',
-    descZh: 'PTFE材质O型圈，几乎惰性于所有化学介质，适用于超高温、强腐蚀和洁净度要求极高的工况。',
-    descEn: 'PTFE O-ring with near-universal chemical resistance, suitable for extreme temperature and ultra-clean applications.',
-    price: 4.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50011,
-    sku: 'SF6084-CS2.62',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径2.62mm 聚四氟乙烯 白色 SF6084',
-    nameEn: 'O-Ring CS 2.62 mm PTFE White SF6084',
-    material: 'PTFE (approx. 60 Shore D, white)',
-    temp: '-200℃ ~ +200℃',
-    pressure: 'Static sealing, high chemical and temperature resistance',
-    size: 'CS 2.62 mm',
-    descZh: '小截面PTFE O型圈，适合阀座、仪表接口等高腐蚀介质与高温结合的密封点。',
-    descEn: 'Small cross-section PTFE O-ring for valve seats and instrument ports with aggressive media and temperature.',
-    price: 3.5,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50012,
-    sku: 'SF6084-CS1.78',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径1.78mm 聚四氟乙烯 白色 SF6084',
-    nameEn: 'O-Ring CS 1.78 mm PTFE White SF6084',
-    material: 'PTFE (approx. 60 Shore D, white)',
-    temp: '-200℃ ~ +200℃',
-    pressure: 'Static sealing, high chemical and temperature resistance',
-    size: 'CS 1.78 mm',
-    descZh: '微小截面PTFE O型圈，适合超小沟槽结构以及对颗粒脱落和污染严格控制的行业。',
-    descEn: 'Micro cross-section PTFE O-ring for very small grooves and ultra-low contamination applications.',
-    price: 3.0,
-    currency: 'USD',
-    image: '⭕'
-  },
-
-  // ID 50013–50019 丁腈橡胶 NBR O型圈
-  {
-    id: 50013,
-    sku: 'DJ7020-CS5.33',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径5.33mm 丁腈橡胶 黑色 70ShoreA DJ7020',
-    nameEn: 'O-Ring CS 5.33 mm NBR Black 70ShoreA DJ7020',
-    material: 'NBR 70 Shore A (black)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'Static sealing for oils and fuels',
-    size: 'CS 5.33 mm',
-    descZh: '通用型丁腈橡胶O型圈，适用于矿物油、润滑油等介质的静密封，性价比高，适合大批量采购。',
-    descEn: 'General purpose NBR O-ring for static sealing in mineral oils and lubricants, cost-effective for volume orders.',
-    price: 0.5,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50014,
-    sku: 'DJ7020-CS3.53',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径3.53mm 丁腈橡胶 黑色 70ShoreA DJ7020',
-    nameEn: 'O-Ring CS 3.53 mm NBR Black 70ShoreA DJ7020',
-    material: 'NBR 70 Shore A (black)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'Static sealing for oils and fuels',
-    size: 'CS 3.53 mm',
-    descZh: '中等截面丁腈O型圈，广泛应用于标准液压和气动系统的法兰、端盖及接头密封。',
-    descEn: 'Medium cross-section NBR O-ring widely used in standard hydraulic and pneumatic flanges, covers and fittings.',
-    price: 0.35,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50015,
-    sku: 'DJ7020-CS2.62',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径2.62mm 丁腈橡胶 黑色 70ShoreA DJ7020',
-    nameEn: 'O-Ring CS 2.62 mm NBR Black 70ShoreA DJ7020',
-    material: 'NBR 70 Shore A (black)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'Static sealing for oils and fuels',
-    size: 'CS 2.62 mm',
-    descZh: '小截面丁腈O型圈，适合空间有限的小型液压元件、压力表和接头密封。',
-    descEn: 'Small cross-section NBR O-ring for compact hydraulic components, gauges and fittings.',
-    price: 0.25,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50016,
-    sku: 'DJ7020-CS2.5',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径2.5mm 丁腈橡胶 黑色 70ShoreA DJ7020',
-    nameEn: 'O-Ring CS 2.5 mm NBR Black 70ShoreA DJ7020',
-    material: 'NBR 70 Shore A (black)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'Static sealing for oils and fuels',
-    size: 'CS 2.5 mm',
-    descZh: '非标截面丁腈O型圈，用于特殊沟槽设计的机械设备，提供稳定的油封性能。',
-    descEn: 'Non-standard cross-section NBR O-ring for special groove designs, ensuring reliable oil sealing.',
-    price: 0.25,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50017,
-    sku: 'DJ7020-CS2.0',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径2mm 丁腈橡胶 黑色 70ShoreA DJ7020',
-    nameEn: 'O-Ring CS 2.0 mm NBR Black 70ShoreA DJ7020',
-    material: 'NBR 70 Shore A (black)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'Static sealing for oils and fuels',
-    size: 'CS 2.0 mm',
-    descZh: '细截面丁腈O型圈，可用于精密液压阀、气动元件及紧凑型连接件的密封。',
-    descEn: 'Fine cross-section NBR O-ring for precise hydraulic valves, pneumatic components and compact connectors.',
-    price: 0.22,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50018,
-    sku: 'DJ7020-CS1.78',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径1.78mm 丁腈橡胶 黑色 70ShoreA DJ7020',
-    nameEn: 'O-Ring CS 1.78 mm NBR Black 70ShoreA DJ7020',
-    material: 'NBR 70 Shore A (black)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'Static sealing for oils and fuels',
-    size: 'CS 1.78 mm',
-    descZh: '微小截面丁腈O型圈，适用于微型液压装置、仪器仪表与传感器接口。',
-    descEn: 'Micro cross-section NBR O-ring for miniature hydraulic devices, instruments and sensor ports.',
-    price: 0.2,
-    currency: 'USD',
-    image: '⭕'
-  },
-  {
-    id: 50019,
-    sku: 'DJ7020-CS1.0',
-    category: 'o-ring',
-    brand: 'seals-mall',
-    nameZh: 'O型圈 截面直径1mm 丁腈橡胶 黑色 70ShoreA DJ7020',
-    nameEn: 'O-Ring CS 1.0 mm NBR Black 70ShoreA DJ7020',
-    material: 'NBR 70 Shore A (black)',
-    temp: '-30℃ ~ +100℃',
-    pressure: 'Static sealing for oils and fuels',
-    size: 'CS 1.0 mm',
-    descZh: '极细截面丁腈O型圈，用于超小沟槽和精密组件，对装配精度有较高要求。',
-    descEn: 'Ultra-thin cross-section NBR O-ring for very small grooves and precision components requiring high assembly accuracy.',
-    price: 0.18,
-    currency: 'USD',
-    image: '⭕'
-  }
-];
-
+        // Product data（18 个 O 型圈）
+        const products = [
+          {
+            id: 50002,
+            sku: 'Z1028-CS5.33',
+            category: 'o-ring',
+            brand: 'markez',
+            nameZh: 'O型圈 截面直径5.33mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+            nameEn: 'O-Ring CS 5.33 mm FFKM Black 75ShoreA Z1028',
+            material: 'FFKM 75 Shore A (black)',
+            temp: '-15℃ ~ +260℃',
+            pressure: 'Static sealing, high chemical resistance',
+            size: 'CS 5.33 mm',
+            descZh: '全氟醚橡胶O型圈，适用于强腐蚀性化学介质和高温工况，适合作为关键部位的长期密封解决方案。',
+            descEn: 'FFKM O-ring for aggressive chemicals and high temperature applications, suitable for critical long-life sealing.',
+            price: 10.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50003,
+            sku: 'Z1028-CS3.53',
+            category: 'o-ring',
+            brand: 'markez',
+            nameZh: 'O型圈 截面直径3.53mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+            nameEn: 'O-Ring CS 3.53 mm FFKM Black 75ShoreA Z1028',
+            material: 'FFKM 75 Shore A (black)',
+            temp: '-15℃ ~ +260℃',
+            pressure: 'Static sealing, high chemical resistance',
+            size: 'CS 3.53 mm',
+            descZh: '全氟醚橡胶O型圈，适用于高温、高真空及强腐蚀工况，可替代进口品牌同类产品。',
+            descEn: 'FFKM O-ring for high temperature, vacuum and corrosive media, suitable as an alternative to major imported brands.',
+            price: 8.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50004,
+            sku: 'Z1028-CS2.62',
+            category: 'o-ring',
+            brand: 'markez',
+            nameZh: 'O型圈 截面直径2.62mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+            nameEn: 'O-Ring CS 2.62 mm FFKM Black 75ShoreA Z1028',
+            material: 'FFKM 75 Shore A (black)',
+            temp: '-15℃ ~ +260℃',
+            pressure: 'Static sealing, high chemical resistance',
+            size: 'CS 2.62 mm',
+            descZh: '小截面全氟醚O型圈，适用于精密阀件、分析仪器等空间受限部位的密封。',
+            descEn: 'Small cross-section FFKM O-ring for precise valves and analyzers where space is limited.',
+            price: 7.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50005,
+            sku: 'Z1028-CS1.78',
+            category: 'o-ring',
+            brand: 'markez',
+            nameZh: 'O型圈 截面直径1.78mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+            nameEn: 'O-Ring CS 1.78 mm FFKM Black 75ShoreA Z1028',
+            material: 'FFKM 75 Shore A (black)',
+            temp: '-15℃ ~ +260℃',
+            pressure: 'Static sealing, high chemical resistance',
+            size: 'CS 1.78 mm',
+            descZh: '微小截面全氟醚O型圈，适用于超小沟槽结构和对耐介质性能要求极高的密封位置。',
+            descEn: 'Micro cross-section FFKM O-ring for very small grooves and applications requiring extreme chemical resistance.',
+            price: 6.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50006,
+            sku: 'GJ7048-CS5.33',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径5.33mm 硅橡胶 黑色 70ShoreA GJ7048',
+            nameEn: 'O-Ring CS 5.33 mm VMQ Black 70ShoreA GJ7048',
+            material: 'VMQ 70 Shore A (black)',
+            temp: '-50℃ ~ +200℃',
+            pressure: 'Static sealing, general purpose',
+            size: 'CS 5.33 mm',
+            descZh: '硅橡胶O型圈，低温柔性好，适用于食品、医疗及电子设备等高洁净要求工况。',
+            descEn: 'Silicone rubber O-ring with excellent low temperature flexibility, suitable for food, medical and electronic applications.',
+            price: 2.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50007,
+            sku: 'GJ7048-CS3.53',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径3.53mm 硅橡胶 黑色 70ShoreA GJ7048',
+            nameEn: 'O-Ring CS 3.53 mm VMQ Black 70ShoreA GJ7048',
+            material: 'VMQ 70 Shore A (black)',
+            temp: '-50℃ ~ +200℃',
+            pressure: 'Static sealing, general purpose',
+            size: 'CS 3.53 mm',
+            descZh: '中等截面硅橡胶O型圈，适用于低温环境和对耐候性要求较高的密封应用。',
+            descEn: 'Medium cross-section silicone O-ring for low temperature and weather-resistant sealing applications.',
+            price: 1.5,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50008,
+            sku: 'PU9068-CS5.33',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径5.33mm 聚氨酯 红色 95ShoreA PU9068',
+            nameEn: 'O-Ring CS 5.33 mm Polyurethane Red 95ShoreA PU9068',
+            material: 'Polyurethane 95 Shore A (red)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'High pressure, high wear resistance',
+            size: 'CS 5.33 mm',
+            descZh: '高硬度聚氨酯O型圈，耐磨损、耐挤出性能优异，适用于高压液压系统的动态密封。',
+            descEn: 'High hardness polyurethane O-ring with excellent wear and extrusion resistance for high pressure hydraulic dynamic sealing.',
+            price: 2.5,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50009,
+            sku: 'PU9068-CS3.53',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径3.53mm 聚氨酯 红色 95ShoreA PU9068',
+            nameEn: 'O-Ring CS 3.53 mm Polyurethane Red 95ShoreA PU9068',
+            material: 'Polyurethane 95 Shore A (red)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'High pressure, high wear resistance',
+            size: 'CS 3.53 mm',
+            descZh: '小截面聚氨酯O型圈，适合空间有限且存在一定往复运动或冲击压力的密封位置。',
+            descEn: 'Small cross-section polyurethane O-ring for compact spaces with reciprocating motion or pressure spikes.',
+            price: 2.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50010,
+            sku: 'SF6084-CS3.53',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径3.53mm 聚四氟乙烯 白色 SF6084',
+            nameEn: 'O-Ring CS 3.53 mm PTFE White SF6084',
+            material: 'PTFE (approx. 60 Shore D, white)',
+            temp: '-200℃ ~ +200℃',
+            pressure: 'Static sealing, high chemical and temperature resistance',
+            size: 'CS 3.53 mm',
+            descZh: 'PTFE材质O型圈，几乎惰性于所有化学介质，适用于超高温、强腐蚀和洁净度要求极高的工况。',
+            descEn: 'PTFE O-ring with near-universal chemical resistance, suitable for extreme temperature and ultra-clean applications.',
+            price: 4.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50011,
+            sku: 'SF6084-CS2.62',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径2.62mm 聚四氟乙烯 白色 SF6084',
+            nameEn: 'O-Ring CS 2.62 mm PTFE White SF6084',
+            material: 'PTFE (approx. 60 Shore D, white)',
+            temp: '-200℃ ~ +200℃',
+            pressure: 'Static sealing, high chemical and temperature resistance',
+            size: 'CS 2.62 mm',
+            descZh: '小截面PTFE O型圈，适合阀座、仪表接口等高腐蚀介质与高温结合的密封点。',
+            descEn: 'Small cross-section PTFE O-ring for valve seats and instrument ports with aggressive media and temperature.',
+            price: 3.5,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50012,
+            sku: 'SF6084-CS1.78',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径1.78mm 聚四氟乙烯 白色 SF6084',
+            nameEn: 'O-Ring CS 1.78 mm PTFE White SF6084',
+            material: 'PTFE (approx. 60 Shore D, white)',
+            temp: '-200℃ ~ +200℃',
+            pressure: 'Static sealing, high chemical and temperature resistance',
+            size: 'CS 1.78 mm',
+            descZh: '微小截面PTFE O型圈，适合超小沟槽结构以及对颗粒脱落和污染严格控制的行业。',
+            descEn: 'Micro cross-section PTFE O-ring for very small grooves and ultra-low contamination applications.',
+            price: 3.0,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50013,
+            sku: 'DJ7020-CS5.33',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径5.33mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+            nameEn: 'O-Ring CS 5.33 mm NBR Black 70ShoreA DJ7020',
+            material: 'NBR 70 Shore A (black)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'Static sealing for oils and fuels',
+            size: 'CS 5.33 mm',
+            descZh: '通用型丁腈橡胶O型圈，适用于矿物油、润滑油等介质的静密封，性价比高，适合大批量采购。',
+            descEn: 'General purpose NBR O-ring for static sealing in mineral oils and lubricants, cost-effective for volume orders.',
+            price: 0.5,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50014,
+            sku: 'DJ7020-CS3.53',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径3.53mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+            nameEn: 'O-Ring CS 3.53 mm NBR Black 70ShoreA DJ7020',
+            material: 'NBR 70 Shore A (black)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'Static sealing for oils and fuels',
+            size: 'CS 3.53 mm',
+            descZh: '中等截面丁腈O型圈，广泛应用于标准液压和气动系统的法兰、端盖及接头密封。',
+            descEn: 'Medium cross-section NBR O-ring widely used in standard hydraulic and pneumatic flanges, covers and fittings.',
+            price: 0.35,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50015,
+            sku: 'DJ7020-CS2.62',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径2.62mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+            nameEn: 'O-Ring CS 2.62 mm NBR Black 70ShoreA DJ7020',
+            material: 'NBR 70 Shore A (black)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'Static sealing for oils and fuels',
+            size: 'CS 2.62 mm',
+            descZh: '小截面丁腈O型圈，适合空间有限的小型液压元件、压力表和接头密封。',
+            descEn: 'Small cross-section NBR O-ring for compact hydraulic components, gauges and fittings.',
+            price: 0.25,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50016,
+            sku: 'DJ7020-CS2.5',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径2.5mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+            nameEn: 'O-Ring CS 2.5 mm NBR Black 70ShoreA DJ7020',
+            material: 'NBR 70 Shore A (black)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'Static sealing for oils and fuels',
+            size: 'CS 2.5 mm',
+            descZh: '非标截面丁腈O型圈，用于特殊沟槽设计的机械设备，提供稳定的油封性能。',
+            descEn: 'Non-standard cross-section NBR O-ring for special groove designs, ensuring reliable oil sealing.',
+            price: 0.25,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50017,
+            sku: 'DJ7020-CS2.0',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径2mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+            nameEn: 'O-Ring CS 2.0 mm NBR Black 70ShoreA DJ7020',
+            material: 'NBR 70 Shore A (black)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'Static sealing for oils and fuels',
+            size: 'CS 2.0 mm',
+            descZh: '细截面丁腈O型圈，可用于精密液压阀、气动元件及紧凑型连接件的密封。',
+            descEn: 'Fine cross-section NBR O-ring for precise hydraulic valves, pneumatic components and compact connectors.',
+            price: 0.22,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50018,
+            sku: 'DJ7020-CS1.78',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径1.78mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+            nameEn: 'O-Ring CS 1.78 mm NBR Black 70ShoreA DJ7020',
+            material: 'NBR 70 Shore A (black)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'Static sealing for oils and fuels',
+            size: 'CS 1.78 mm',
+            descZh: '微小截面丁腈O型圈，适用于微型液压装置、仪器仪表与传感器接口。',
+            descEn: 'Micro cross-section NBR O-ring for miniature hydraulic devices, instruments and sensor ports.',
+            price: 0.2,
+            currency: 'USD',
+            image: '⭕'
+          },
+          {
+            id: 50019,
+            sku: 'DJ7020-CS1.0',
+            category: 'o-ring',
+            brand: 'seals-mall',
+            nameZh: 'O型圈 截面直径1mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+            nameEn: 'O-Ring CS 1.0 mm NBR Black 70ShoreA DJ7020',
+            material: 'NBR 70 Shore A (black)',
+            temp: '-30℃ ~ +100℃',
+            pressure: 'Static sealing for oils and fuels',
+            size: 'CS 1.0 mm',
+            descZh: '极细截面丁腈O型圈，用于超小沟槽和精密组件，对装配精度有较高要求。',
+            descEn: 'Ultra-thin cross-section NBR O-ring for very small grooves and precision components requiring high assembly accuracy.',
+            price: 0.18,
+            currency: 'USD',
+            image: '⭕'
+          }
+        ];
 
         // Cart state
         let cart = [];
@@ -886,7 +876,9 @@ const products = [
                         <div class="product-image">${product.image}</div>
                         <div class="product-info">
                             <div class="product-name">${name}</div>
-                            <div class="product-specs">${product.specs}</div>
+                            <div class="product-specs">
+                                ${product.material || ''} · ${product.size || ''}
+                            </div>
                             <div class="product-price">$${product.price.toFixed(2)}</div>
                             <div class="product-actions">
                                 <input type="number" class="qty-selector" value="1" min="1" id="qty-${product.id}">
@@ -959,7 +951,6 @@ const products = [
         function changeLanguage() {
             currentLanguage = document.getElementById('langSelect').value;
             
-            // Update UI text
             const t = translations[currentLanguage];
             document.getElementById('productsTitle').textContent = t.productsTitle;
             document.getElementById('cartTitle').textContent = t.cartTitle;
@@ -972,7 +963,6 @@ const products = [
             document.getElementById('payBtn').textContent = t.payBtn;
             document.getElementById('footerText').textContent = t.footerText;
 
-            // Re-render products
             renderProducts('all');
             updateCartUI();
         }
@@ -991,26 +981,13 @@ const products = [
             document.getElementById('checkoutModal').classList.remove('open');
         }
 
-        // Handle checkout with Stripe
+        // Handle checkout with Stripe（后面会用 PayPal 替换）
         async function handleCheckout(e) {
             e.preventDefault();
-
-            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0) * 100; // Convert to cents
-
-            // Create checkout session (you'll need a backend for this)
-            // For now, redirect to Stripe payment page
-            const items = cart.map(item => ({
-                name: item.nameEn,
-                amount: Math.round(item.price * 100),
-                currency: 'usd',
-                quantity: item.qty
-            }));
-
-            // This is a simplified demo - in production you'd call your backend
-            alert(`Total: $${(total/100).toFixed(2)}\n\nIn production, this would redirect to Stripe payment page.`);
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0) * 100;
+            alert(`Total: $${(total/100).toFixed(2)}\n\nPayment integration will be added soon.`);
         }
 
-        // Initialize on load
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
