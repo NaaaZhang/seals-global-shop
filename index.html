@@ -108,7 +108,6 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .filter-btn {
@@ -132,7 +131,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
         }
 
@@ -152,18 +151,12 @@
 
         .product-image {
             width: 100%;
-            height: 220px;
-            background: #f8f9fa;
+            height: 200px;
+            background: var(--bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            font-size: 3rem;
         }
 
         .product-info {
@@ -173,16 +166,12 @@
         .product-name {
             font-weight: 600;
             margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-            min-height: 2.8em;
-            line-height: 1.4;
         }
 
         .product-specs {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #666;
             margin-bottom: 1rem;
-            min-height: 3em;
         }
 
         .product-price {
@@ -221,15 +210,6 @@
 
         .btn-primary:hover {
             background: var(--primary-hover);
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #45a049;
         }
 
         /* Request Quote Button (留资按钮) */
@@ -419,6 +399,15 @@
             color: #999;
         }
 
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+        }
+
         @media (max-width: 768px) {
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -513,4 +502,12 @@
             <form id="checkoutForm" onsubmit="handleCheckout(event)">
                 <div class="form-group">
                     <label class="form-label" id="nameLabel">Full Name</label>
-                    <input type="text" class="form-input" name="name"
+                    <input type="text" class="form-input" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="emailLabel">Email</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="addressLabel">Address</label>
+                    <input type="text" class
