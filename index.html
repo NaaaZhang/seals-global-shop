@@ -18,7 +18,6 @@
             --border: #e0e0e0;
             --bg: #f5f5f5;
             --white: #fff;
-            --success: #4caf50;
         }
 
         body {
@@ -152,11 +151,17 @@
         .product-image {
             width: 100%;
             height: 200px;
-            background: var(--bg);
+            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-info {
@@ -210,33 +215,6 @@
 
         .btn-primary:hover {
             background: var(--primary-hover);
-        }
-
-        /* Request Quote Button (留资按钮) */
-        .request-quote-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem 2rem;
-            background: var(--success);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
-            z-index: 999;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .request-quote-btn:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(76, 175, 80, 0.5);
         }
 
         /* Cart Sidebar */
@@ -345,8 +323,6 @@
             max-width: 500px;
             width: 90%;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            max-height: 90vh;
-            overflow-y: auto;
         }
 
         .modal-close {
@@ -358,7 +334,6 @@
         .modal-title {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            clear: both;
         }
 
         .form-group {
@@ -371,18 +346,12 @@
             font-weight: 600;
         }
 
-        .form-input, .form-textarea {
+        .form-input {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid var(--border);
             border-radius: 4px;
             font-size: 1rem;
-            font-family: inherit;
-        }
-
-        .form-textarea {
-            min-height: 100px;
-            resize: vertical;
         }
 
         .footer {
@@ -399,15 +368,6 @@
             color: #999;
         }
 
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            border: 1px solid #c3e6cb;
-        }
-
         @media (max-width: 768px) {
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -420,13 +380,6 @@
 
             .nav {
                 gap: 1rem;
-            }
-
-            .request-quote-btn {
-                bottom: 1rem;
-                right: 1rem;
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
             }
         }
     </style>
@@ -473,11 +426,6 @@
         </section>
     </main>
 
-    <!-- Request Quote Button (留资按钮) -->
-    <button class="request-quote-btn" onclick="openQuoteModal()" id="requestQuoteBtn">
-        📧 Request Quote
-    </button>
-
     <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <span class="cart-close" onclick="toggleCart()">✕</span>
@@ -494,10 +442,10 @@
         </div>
     </div>
 
-    <!-- Checkout Modal -->
+    <!-- Modal -->
     <div class="modal" id="checkoutModal">
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('checkoutModal')">✕</span>
+            <span class="modal-close" onclick="closeModal()">✕</span>
             <h2 class="modal-title" id="checkoutTitle">Checkout</h2>
             <form id="checkoutForm" onsubmit="handleCheckout(event)">
                 <div class="form-group">
@@ -510,4 +458,50 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" id="addressLabel">Address</label>
-                    <input type="text" class
+                    <input type="text" class="form-input" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" id="phoneLabel">Phone</label>
+                    <input type="tel" class="form-input" name="phone" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; padding: 1rem;" id="payBtn">Pay with Stripe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 SealsMall. All rights reserved.</p>
+        <p id="footerText">Professional Sealing Solutions for Global Markets</p>
+    </footer>
+
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        // Multi-language data
+        const translations = {
+            en: {
+                productsTitle: 'Our Products',
+                cartTitle: 'Shopping Cart',
+                totalLabel: 'Total:',
+                checkoutTitle: 'Checkout',
+                nameLabel: 'Full Name',
+                emailLabel: 'Email',
+                addressLabel: 'Address',
+                phoneLabel: 'Phone',
+                payBtn: 'Pay with Stripe',
+                footerText: 'Professional Sealing Solutions for Global Markets',
+                emptyCart: 'Your cart is empty'
+            },
+            zh: {
+                productsTitle: '产品列表',
+                cartTitle: '购物车',
+                totalLabel: '总计:',
+                checkoutTitle: '结账',
+                nameLabel: '姓名',
+                emailLabel: '邮箱',
+                addressLabel: '地址',
+                phoneLabel: '电话',
+                payBtn: '使用 Stripe 支付',
+                footer
