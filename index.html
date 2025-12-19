@@ -1,507 +1,994 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SealsMall - Global Sealing Solutions</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SealsMall - Global Sealing Solutions</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-        :root {
-            --primary: #1e88e5;
-            --primary-hover: #1565c0;
-            --text: #333;
-            --border: #e0e0e0;
-            --bg: #f5f5f5;
-            --white: #fff;
-        }
+:root {
+--primary: #1e88e5;
+--primary-hover: #1565c0;
+--text: #333;
+--border: #e0e0e0;
+--bg: #f5f5f5;
+--white: #fff;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-        }
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+line-height: 1.6;
+color: var(--text);
+background: var(--bg);
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
 
-        /* Header */
-        header {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+/* Header */
+header {
+background: var(--white);
+border-bottom: 1px solid var(--border);
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
+.header-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 0;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
+.logo {
+font-size: 1.5rem;
+font-weight: bold;
+color: var(--primary);
+}
 
-        .nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
+.nav {
+display: flex;
+gap: 2rem;
+align-items: center;
+}
 
-        .lang-select {
-            padding: 0.5rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            cursor: pointer;
-        }
+.lang-select {
+padding: 0.5rem;
+border: 1px solid var(--border);
+border-radius: 4px;
+cursor: pointer;
+}
 
-        .cart-icon {
-            cursor: pointer;
-            font-size: 1.5rem;
-            position: relative;
-        }
+.cart-icon {
+cursor: pointer;
+font-size: 1.5rem;
+position: relative;
+}
 
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff6b6b;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
+.cart-count {
+position: absolute;
+top: -8px;
+right: -8px;
+background: #ff6b6b;
+color: white;
+border-radius: 50%;
+width: 20px;
+height: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.75rem;
+font-weight: bold;
+}
 
-        /* Products Grid */
-        .products-section {
-            padding: 3rem 0;
-        }
+/* Products Grid */
+.products-section {
+padding: 3rem 0;
+}
 
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+.section-title {
+font-size: 2rem;
+margin-bottom: 2rem;
+text-align: center;
+}
 
-        .filters {
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+.filters {
+margin-bottom: 2rem;
+display: flex;
+gap: 1rem;
+flex-wrap: wrap;
+}
 
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            background: var(--white);
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
+.filter-btn {
+padding: 0.5rem 1rem;
+border: 1px solid var(--border);
+background: var(--white);
+cursor: pointer;
+border-radius: 4px;
+transition: all 0.3s;
+}
 
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
+.filter-btn.active {
+background: var(--primary);
+color: white;
+border-color: var(--primary);
+}
 
-        .filter-btn:hover {
-            border-color: var(--primary);
-        }
+.filter-btn:hover {
+border-color: var(--primary);
+}
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-        }
+.products-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 2rem;
+}
 
-        .product-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
+.product-card {
+background: var(--white);
+border: 1px solid var(--border);
+border-radius: 8px;
+overflow: hidden;
+transition: all 0.3s;
+cursor: pointer;
+}
 
-        .product-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-        }
+.product-card:hover {
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+transform: translateY(-2px);
+}
 
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+.product-image {
+width: 100%;
+height: 200px;
+background: var(--bg);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 3rem;
+}
 
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.product-info {
+padding: 1.5rem;
+}
 
-        .product-info {
-            padding: 1.5rem;
-        }
+.product-name {
+font-weight: 600;
+margin-bottom: 0.5rem;
+}
 
-        .product-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+.product-specs {
+font-size: 0.85rem;
+color: #666;
+margin-bottom: 1rem;
+}
 
-        .product-specs {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
+.product-price {
+font-size: 1.5rem;
+color: var(--primary);
+font-weight: bold;
+margin-bottom: 1rem;
+}
 
-        .product-price {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
+.product-actions {
+display: flex;
+gap: 0.5rem;
+}
 
-        .product-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
+.qty-selector {
+flex: 1;
+padding: 0.5rem;
+border: 1px solid var(--border);
+border-radius: 4px;
+}
 
-        .qty-selector {
-            flex: 1;
-            padding: 0.5rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-        }
+.btn {
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: all 0.3s;
+font-weight: 600;
+}
 
-        .btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
+.btn-primary {
+background: var(--primary);
+color: white;
+flex: 2;
+}
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            flex: 2;
-        }
+.btn-primary:hover {
+background: var(--primary-hover);
+}
 
-        .btn-primary:hover {
-            background: var(--primary-hover);
-        }
+/* Cart Sidebar */
+.cart-sidebar {
+position: fixed;
+right: -400px;
+top: 0;
+width: 400px;
+height: 100vh;
+background: var(--white);
+box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+z-index: 1000;
+transition: right 0.3s;
+overflow-y: auto;
+}
 
-        /* Cart Sidebar */
-        .cart-sidebar {
-            position: fixed;
-            right: -400px;
-            top: 0;
-            width: 400px;
-            height: 100vh;
-            background: var(--white);
-            box-shadow: -2px 0 8px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: right 0.3s;
-            overflow-y: auto;
-        }
+.cart-sidebar.open {
+right: 0;
+}
 
-        .cart-sidebar.open {
-            right: 0;
-        }
+.cart-close {
+position: absolute;
+top: 1rem;
+right: 1rem;
+cursor: pointer;
+font-size: 1.5rem;
+}
 
-        .cart-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
+.cart-header {
+padding: 2rem 1.5rem 1rem;
+border-bottom: 1px solid var(--border);
+}
 
-        .cart-header {
-            padding: 2rem 1.5rem 1rem;
-            border-bottom: 1px solid var(--border);
-        }
+.cart-items {
+padding: 1.5rem;
+}
 
-        .cart-items {
-            padding: 1.5rem;
-        }
+.cart-item {
+display: flex;
+gap: 1rem;
+margin-bottom: 1rem;
+padding-bottom: 1rem;
+border-bottom: 1px solid var(--border);
+}
 
-        .cart-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
+.cart-item-info {
+flex: 1;
+}
 
-        .cart-item-info {
-            flex: 1;
-        }
+.cart-item-remove {
+cursor: pointer;
+color: #ff6b6b;
+}
 
-        .cart-item-remove {
-            cursor: pointer;
-            color: #ff6b6b;
-        }
+.cart-footer {
+padding: 1.5rem;
+border-top: 1px solid var(--border);
+}
 
-        .cart-footer {
-            padding: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
+.cart-total {
+font-size: 1.25rem;
+font-weight: bold;
+margin-bottom: 1rem;
+display: flex;
+justify-content: space-between;
+}
 
-        .cart-total {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-        }
+.checkout-btn {
+width: 100%;
+padding: 1rem;
+background: var(--primary);
+color: white;
+border: none;
+border-radius: 4px;
+font-size: 1rem;
+font-weight: bold;
+cursor: pointer;
+}
 
-        .checkout-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.checkout-btn:hover {
+background: var(--primary-hover);
+}
 
-        .checkout-btn:hover {
-            background: var(--primary-hover);
-        }
+/* Modal */
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.5);
+z-index: 2000;
+align-items: center;
+justify-content: center;
+}
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
+.modal.open {
+display: flex;
+}
 
-        .modal.open {
-            display: flex;
-        }
+.modal-content {
+background: var(--white);
+padding: 2rem;
+border-radius: 8px;
+max-width: 500px;
+width: 90%;
+box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
 
-        .modal-content {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
+.modal-close {
+float: right;
+cursor: pointer;
+font-size: 1.5rem;
+}
 
-        .modal-close {
-            float: right;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
+.modal-title {
+font-size: 1.5rem;
+margin-bottom: 1.5rem;
+}
 
-        .modal-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
+.form-group {
+margin-bottom: 1rem;
+}
 
-        .form-group {
-            margin-bottom: 1rem;
-        }
+.form-label {
+display: block;
+margin-bottom: 0.5rem;
+font-weight: 600;
+}
 
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
+.form-input {
+width: 100%;
+padding: 0.75rem;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 1rem;
+}
 
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            font-size: 1rem;
-        }
+.footer {
+background: #333;
+color: white;
+padding: 3rem 0;
+margin-top: 3rem;
+text-align: center;
+}
 
-        .footer {
-            background: #333;
-            color: white;
-            padding: 3rem 0;
-            margin-top: 3rem;
-            text-align: center;
-        }
+.empty-state {
+text-align: center;
+padding: 2rem;
+color: #999;
+}
 
-        .empty-state {
-            text-align: center;
-            padding: 2rem;
-            color: #999;
-        }
+@media (max-width: 768px) {
+.products-grid {
+grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
 
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
+.cart-sidebar {
+width: 100%;
+right: -100%;
+}
 
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
-
-            .nav {
-                gap: 1rem;
-            }
-        }
-    </style>
+.nav {
+gap: 1rem;
+}
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">🔒 SealsMall</div>
-                <div class="nav">
-                    <select class="lang-select" id="langSelect" onchange="changeLanguage()">
-                        <option value="en">English</option>
-                        <option value="zh">中文</option>
-                        <option value="de">Deutsch</option>
-                        <option value="ja">日本語</option>
-                        <option value="es">Español</option>
-                    </select>
-                    <div class="cart-icon" onclick="toggleCart()">
-                        🛒
-                        <span class="cart-count" id="cartCount">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<!-- Header -->
+<header>
+<div class="container">
+<div class="header-content">
+<div class="logo">🔒 SealsMall</div>
+<div class="nav">
+<select class="lang-select" id="langSelect" onchange="changeLanguage()">
+<option value="en">English</option>
+<option value="zh">中文</option>
+<option value="de">Deutsch</option>
+<option value="ja">日本語</option>
+<option value="es">Español</option>
+</select>
+<div class="cart-icon" onclick="toggleCart()">
+🛒
+<span class="cart-count" id="cartCount">0</span>
+</div>
+</div>
+</div>
+</div>
+</header>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Products Section -->
-        <section class="products-section">
-            <h1 class="section-title" id="productsTitle">Our Products</h1>
+<!-- Main Content -->
+<main class="container">
+<!-- Products Section -->
+<section class="products-section">
+<h1 class="section-title" id="productsTitle">Our Products</h1>
 
-            <!-- Filters -->
-            <div class="filters">
-                <button class="filter-btn active" onclick="filterProducts('all')">All</button>
-                <button class="filter-btn" onclick="filterProducts('o-ring')">O-Rings</button>
-                <button class="filter-btn" onclick="filterProducts('oil-seal')">Oil Seals</button>
-                <button class="filter-btn" onclick="filterProducts('guide-ring')">Guide Rings</button>
-            </div>
+<!-- Filters -->
+<div class="filters">
+<button class="filter-btn active" onclick="filterProducts('all')">All</button>
+<button class="filter-btn" onclick="filterProducts('o-ring')">O-Rings</button>
+<button class="filter-btn" onclick="filterProducts('oil-seal')">Oil Seals</button>
+<button class="filter-btn" onclick="filterProducts('guide-ring')">Guide Rings</button>
+</div>
 
-            <!-- Products Grid -->
-            <div class="products-grid" id="productsGrid"></div>
-        </section>
-    </main>
+<!-- Products Grid -->
+<div class="products-grid" id="productsGrid"></div>
+</section>
+</main>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <span class="cart-close" onclick="toggleCart()">✕</span>
-        <div class="cart-header">
-            <h2 id="cartTitle">Shopping Cart</h2>
-        </div>
-        <div class="cart-items" id="cartItems"></div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span id="totalLabel">Total:</span>
-                <span id="cartTotal">$0.00</span>
-            </div>
-            <button class="checkout-btn" onclick="checkout()" id="checkoutBtn">Checkout</button>
-        </div>
-    </div>
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+<span class="cart-close" onclick="toggleCart()">✕</span>
+<div class="cart-header">
+<h2 id="cartTitle">Shopping Cart</h2>
+</div>
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-footer">
+<div class="cart-total">
+<span id="totalLabel">Total:</span>
+<span id="cartTotal">$0.00</span>
+</div>
+<button class="checkout-btn" onclick="checkout()" id="checkoutBtn">Checkout</button>
+</div>
+</div>
 
-    <!-- Modal -->
-    <div class="modal" id="checkoutModal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">✕</span>
-            <h2 class="modal-title" id="checkoutTitle">Checkout</h2>
-            <form id="checkoutForm" onsubmit="handleCheckout(event)">
-                <div class="form-group">
-                    <label class="form-label" id="nameLabel">Full Name</label>
-                    <input type="text" class="form-input" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="emailLabel">Email</label>
-                    <input type="email" class="form-input" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="addressLabel">Address</label>
-                    <input type="text" class="form-input" name="address" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="phoneLabel">Phone</label>
-                    <input type="tel" class="form-input" name="phone" required>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width:100%; padding: 1rem;" id="payBtn">Pay with Stripe</button>
-            </form>
-        </div>
-    </div>
+<!-- Modal -->
+<div class="modal" id="checkoutModal">
+<div class="modal-content">
+<span class="modal-close" onclick="closeModal()">✕</span>
+<h2 class="modal-title" id="checkoutTitle">Checkout</h2>
+<form id="checkoutForm" onsubmit="handleCheckout(event)">
+<div class="form-group">
+<label class="form-label" id="nameLabel">Full Name</label>
+<input type="text" class="form-input" name="name" required>
+</div>
+<div class="form-group">
+<label class="form-label" id="emailLabel">Email</label>
+<input type="email" class="form-input" name="email" required>
+</div>
+<div class="form-group">
+<label class="form-label" id="addressLabel">Address</label>
+<input type="text" class="form-input" name="address" required>
+</div>
+<div class="form-group">
+<label class="form-label" id="phoneLabel">Phone</label>
+<input type="tel" class="form-input" name="phone" required>
+</div>
+<button type="submit" class="btn btn-primary" style="width:100%; padding: 1rem;" id="payBtn">Pay with Stripe</button>
+</form>
+</div>
+</div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 SealsMall. All rights reserved.</p>
-        <p id="footerText">Professional Sealing Solutions for Global Markets</p>
-    </footer>
+<!-- Footer -->
+<footer class="footer">
+<p>&copy; 2025 SealsMall. All rights reserved.</p>
+<p id="footerText">Professional Sealing Solutions for Global Markets</p>
+</footer>
 
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
+<!-- Stripe -->
+<script src="https://js.stripe.com/v3/"></script>
 
-    <script>
-        // Multi-language data
-        const translations = {
-            en: {
-                productsTitle: 'Our Products',
-                cartTitle: 'Shopping Cart',
-                totalLabel: 'Total:',
-                checkoutTitle: 'Checkout',
-                nameLabel: 'Full Name',
-                emailLabel: 'Email',
-                addressLabel: 'Address',
-                phoneLabel: 'Phone',
-                payBtn: 'Pay with Stripe',
-                footerText: 'Professional Sealing Solutions for Global Markets',
-                emptyCart: 'Your cart is empty'
-            },
-            zh: {
-                productsTitle: '产品列表',
-                cartTitle: '购物车',
-                totalLabel: '总计:',
-                checkoutTitle: '结账',
-                nameLabel: '姓名',
-                emailLabel: '邮箱',
-                addressLabel: '地址',
-                phoneLabel: '电话',
-                payBtn: '使用 Stripe 支付',
-                footer
+<script>
+// Multi-language data
+const translations = {
+en: {
+productsTitle: 'Our Products',
+cartTitle: 'Shopping Cart',
+totalLabel: 'Total:',
+checkoutTitle: 'Checkout',
+nameLabel: 'Full Name',
+emailLabel: 'Email',
+addressLabel: 'Address',
+phoneLabel: 'Phone',
+payBtn: 'Pay with Stripe',
+footerText: 'Professional Sealing Solutions for Global Markets',
+emptyCart: 'Your cart is empty'
+},
+zh: {
+productsTitle: '产品列表',
+cartTitle: '购物车',
+totalLabel: '总计:',
+checkoutTitle: '结账',
+nameLabel: '姓名',
+emailLabel: '邮箱',
+addressLabel: '地址',
+phoneLabel: '电话',
+payBtn: '使用 Stripe 支付',
+footerText: '专业密封解决方案提供商',
+emptyCart: '您的购物车为空'
+},
+de: {
+productsTitle: 'Unsere Produkte',
+cartTitle: 'Warenkorb',
+totalLabel: 'Gesamt:',
+checkoutTitle: 'Kasse',
+nameLabel: 'Vollständiger Name',
+emailLabel: 'Email',
+addressLabel: 'Adresse',
+phoneLabel: 'Telefon',
+payBtn: 'Mit Stripe bezahlen',
+footerText: 'Professionelle Dichtungslösungen für globale Märkte',
+emptyCart: 'Ihr Warenkorb ist leer'
+},
+ja: {
+productsTitle: '商品',
+cartTitle: 'ショッピングカート',
+totalLabel: '合計:',
+checkoutTitle: 'チェックアウト',
+nameLabel: '氏名',
+emailLabel: 'メール',
+addressLabel: '住所',
+phoneLabel: '電話',
+payBtn: 'Stripe で支払う',
+footerText: 'グローバル市場向けの専門的なシール対策',
+emptyCart: 'カートは空です'
+},
+es: {
+productsTitle: 'Nuestros Productos',
+cartTitle: 'Carrito de Compras',
+totalLabel: 'Total:',
+checkoutTitle: 'Pagar',
+nameLabel: 'Nombre completo',
+emailLabel: 'Correo electrónico',
+addressLabel: 'Dirección',
+phoneLabel: 'Teléfono',
+payBtn: 'Pagar con Stripe',
+footerText: 'Soluciones profesionales de sellado para mercados globales',
+emptyCart: 'Su carrito está vacío'
+}
+};
+
+// Product data（18 个 O 型圈）
+const products = [
+{
+id: 50002,
+sku: 'Z1028-CS5.33',
+category: 'o-ring',
+brand: 'markez',
+nameZh: 'O型圈 截面直径5.33mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+nameEn: 'O-Ring CS 5.33 mm FFKM Black 75ShoreA Z1028',
+material: 'FFKM 75 Shore A (black)',
+temp: '-15℃ ~ +260℃',
+pressure: 'Static sealing, high chemical resistance',
+size: 'CS 5.33 mm',
+descZh: '全氟醚橡胶O型圈，适用于强腐蚀性化学介质和高温工况，适合作为关键部位的长期密封解决方案。',
+descEn: 'FFKM O-ring for aggressive chemicals and high temperature applications, suitable for critical long-life sealing.',
+price: 10.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50003,
+sku: 'Z1028-CS3.53',
+category: 'o-ring',
+brand: 'markez',
+nameZh: 'O型圈 截面直径3.53mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+nameEn: 'O-Ring CS 3.53 mm FFKM Black 75ShoreA Z1028',
+material: 'FFKM 75 Shore A (black)',
+temp: '-15℃ ~ +260℃',
+pressure: 'Static sealing, high chemical resistance',
+size: 'CS 3.53 mm',
+descZh: '全氟醚橡胶O型圈，适用于高温、高真空及强腐蚀工况，可替代进口品牌同类产品。',
+descEn: 'FFKM O-ring for high temperature, vacuum and corrosive media, suitable as an alternative to major imported brands.',
+price: 8.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50004,
+sku: 'Z1028-CS2.62',
+category: 'o-ring',
+brand: 'markez',
+nameZh: 'O型圈 截面直径2.62mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+nameEn: 'O-Ring CS 2.62 mm FFKM Black 75ShoreA Z1028',
+material: 'FFKM 75 Shore A (black)',
+temp: '-15℃ ~ +260℃',
+pressure: 'Static sealing, high chemical resistance',
+size: 'CS 2.62 mm',
+descZh: '小截面全氟醚O型圈，适用于精密阀件、分析仪器等空间受限部位的密封。',
+descEn: 'Small cross-section FFKM O-ring for precise valves and analyzers where space is limited.',
+price: 7.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50005,
+sku: 'Z1028-CS1.78',
+category: 'o-ring',
+brand: 'markez',
+nameZh: 'O型圈 截面直径1.78mm 全氟醚橡胶 黑色 75ShoreA Z1028',
+nameEn: 'O-Ring CS 1.78 mm FFKM Black 75ShoreA Z1028',
+material: 'FFKM 75 Shore A (black)',
+temp: '-15℃ ~ +260℃',
+pressure: 'Static sealing, high chemical resistance',
+size: 'CS 1.78 mm',
+descZh: '微小截面全氟醚O型圈，适用于超小沟槽结构和对耐介质性能要求极高的密封位置。',
+descEn: 'Micro cross-section FFKM O-ring for very small grooves and applications requiring extreme chemical resistance.',
+price: 6.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50006,
+sku: 'GJ7048-CS5.33',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径5.33mm 硅橡胶 黑色 70ShoreA GJ7048',
+nameEn: 'O-Ring CS 5.33 mm VMQ Black 70ShoreA GJ7048',
+material: 'VMQ 70 Shore A (black)',
+temp: '-50℃ ~ +200℃',
+pressure: 'Static sealing, general purpose',
+size: 'CS 5.33 mm',
+descZh: '硅橡胶O型圈，低温柔性好，适用于食品、医疗及电子设备等高洁净要求工况。',
+descEn: 'Silicone rubber O-ring with excellent low temperature flexibility, suitable for food, medical and electronic applications.',
+price: 2.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50007,
+sku: 'GJ7048-CS3.53',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径3.53mm 硅橡胶 黑色 70ShoreA GJ7048',
+nameEn: 'O-Ring CS 3.53 mm VMQ Black 70ShoreA GJ7048',
+material: 'VMQ 70 Shore A (black)',
+temp: '-50℃ ~ +200℃',
+pressure: 'Static sealing, general purpose',
+size: 'CS 3.53 mm',
+descZh: '中等截面硅橡胶O型圈，适用于低温环境和对耐候性要求较高的密封应用。',
+descEn: 'Medium cross-section silicone O-ring for low temperature and weather-resistant sealing applications.',
+price: 1.5,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50008,
+sku: 'PU9068-CS5.33',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径5.33mm 聚氨酯 红色 95ShoreA PU9068',
+nameEn: 'O-Ring CS 5.33 mm Polyurethane Red 95ShoreA PU9068',
+material: 'Polyurethane 95 Shore A (red)',
+temp: '-30℃ ~ +100℃',
+pressure: 'High pressure, high wear resistance',
+size: 'CS 5.33 mm',
+descZh: '高硬度聚氨酯O型圈，耐磨损、耐挤出性能优异，适用于高压液压系统的动态密封。',
+descEn: 'High hardness polyurethane O-ring with excellent wear and extrusion resistance for high pressure hydraulic dynamic sealing.',
+price: 2.5,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50009,
+sku: 'PU9068-CS3.53',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径3.53mm 聚氨酯 红色 95ShoreA PU9068',
+nameEn: 'O-Ring CS 3.53 mm Polyurethane Red 95ShoreA PU9068',
+material: 'Polyurethane 95 Shore A (red)',
+temp: '-30℃ ~ +100℃',
+pressure: 'High pressure, high wear resistance',
+size: 'CS 3.53 mm',
+descZh: '小截面聚氨酯O型圈，适合空间有限且存在一定往复运动或冲击压力的密封位置。',
+descEn: 'Small cross-section polyurethane O-ring for compact spaces with reciprocating motion or pressure spikes.',
+price: 2.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50010,
+sku: 'SF6084-CS3.53',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径3.53mm 聚四氟乙烯 白色 SF6084',
+nameEn: 'O-Ring CS 3.53 mm PTFE White SF6084',
+material: 'PTFE (approx. 60 Shore D, white)',
+temp: '-200℃ ~ +200℃',
+pressure: 'Static sealing, high chemical and temperature resistance',
+size: 'CS 3.53 mm',
+descZh: 'PTFE材质O型圈，几乎惰性于所有化学介质，适用于超高温、强腐蚀和洁净度要求极高的工况。',
+descEn: 'PTFE O-ring with near-universal chemical resistance, suitable for extreme temperature and ultra-clean applications.',
+price: 4.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50011,
+sku: 'SF6084-CS2.62',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径2.62mm 聚四氟乙烯 白色 SF6084',
+nameEn: 'O-Ring CS 2.62 mm PTFE White SF6084',
+material: 'PTFE (approx. 60 Shore D, white)',
+temp: '-200℃ ~ +200℃',
+pressure: 'Static sealing, high chemical and temperature resistance',
+size: 'CS 2.62 mm',
+descZh: '小截面PTFE O型圈，适合阀座、仪表接口等高腐蚀介质与高温结合的密封点。',
+descEn: 'Small cross-section PTFE O-ring for valve seats and instrument ports with aggressive media and temperature.',
+price: 3.5,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50012,
+sku: 'SF6084-CS1.78',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径1.78mm 聚四氟乙烯 白色 SF6084',
+nameEn: 'O-Ring CS 1.78 mm PTFE White SF6084',
+material: 'PTFE (approx. 60 Shore D, white)',
+temp: '-200℃ ~ +200℃',
+pressure: 'Static sealing, high chemical and temperature resistance',
+size: 'CS 1.78 mm',
+descZh: '微小截面PTFE O型圈，适合超小沟槽结构以及对颗粒脱落和污染严格控制的行业。',
+descEn: 'Micro cross-section PTFE O-ring for very small grooves and ultra-low contamination applications.',
+price: 3.0,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50013,
+sku: 'DJ7020-CS5.33',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径5.33mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+nameEn: 'O-Ring CS 5.33 mm NBR Black 70ShoreA DJ7020',
+material: 'NBR 70 Shore A (black)',
+temp: '-30℃ ~ +100℃',
+pressure: 'Static sealing for oils and fuels',
+size: 'CS 5.33 mm',
+descZh: '通用型丁腈橡胶O型圈，适用于矿物油、润滑油等介质的静密封，性价比高，适合大批量采购。',
+descEn: 'General purpose NBR O-ring for static sealing in mineral oils and lubricants, cost-effective for volume orders.',
+price: 0.5,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50014,
+sku: 'DJ7020-CS3.53',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径3.53mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+nameEn: 'O-Ring CS 3.53 mm NBR Black 70ShoreA DJ7020',
+material: 'NBR 70 Shore A (black)',
+temp: '-30℃ ~ +100℃',
+pressure: 'Static sealing for oils and fuels',
+size: 'CS 3.53 mm',
+descZh: '中等截面丁腈O型圈，广泛应用于标准液压和气动系统的法兰、端盖及接头密封。',
+descEn: 'Medium cross-section NBR O-ring widely used in standard hydraulic and pneumatic flanges, covers and fittings.',
+price: 0.35,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50015,
+sku: 'DJ7020-CS2.62',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径2.62mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+nameEn: 'O-Ring CS 2.62 mm NBR Black 70ShoreA DJ7020',
+material: 'NBR 70 Shore A (black)',
+temp: '-30℃ ~ +100℃',
+pressure: 'Static sealing for oils and fuels',
+size: 'CS 2.62 mm',
+descZh: '小截面丁腈O型圈，适合空间有限的小型液压元件、压力表和接头密封。',
+descEn: 'Small cross-section NBR O-ring for compact hydraulic components, gauges and fittings.',
+price: 0.25,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50016,
+sku: 'DJ7020-CS2.5',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径2.5mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+nameEn: 'O-Ring CS 2.5 mm NBR Black 70ShoreA DJ7020',
+material: 'NBR 70 Shore A (black)',
+temp: '-30℃ ~ +100℃',
+pressure: 'Static sealing for oils and fuels',
+size: 'CS 2.5 mm',
+descZh: '非标截面丁腈O型圈，用于特殊沟槽设计的机械设备，提供稳定的油封性能。',
+descEn: 'Non-standard cross-section NBR O-ring for special groove designs, ensuring reliable oil sealing.',
+price: 0.25,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50017,
+sku: 'DJ7020-CS2.0',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径2mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+nameEn: 'O-Ring CS 2.0 mm NBR Black 70ShoreA DJ7020',
+material: 'NBR 70 Shore A (black)',
+temp: '-30℃ ~ +100℃',
+pressure: 'Static sealing for oils and fuels',
+size: 'CS 2.0 mm',
+descZh: '细截面丁腈O型圈，可用于精密液压阀、气动元件及紧凑型连接件的密封。',
+descEn: 'Fine cross-section NBR O-ring for precise hydraulic valves, pneumatic components and compact connectors.',
+price: 0.22,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50018,
+sku: 'DJ7020-CS1.78',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径1.78mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+nameEn: 'O-Ring CS 1.78 mm NBR Black 70ShoreA DJ7020',
+material: 'NBR 70 Shore A (black)',
+temp: '-30℃ ~ +100℃',
+pressure: 'Static sealing for oils and fuels',
+size: 'CS 1.78 mm',
+descZh: '微小截面丁腈O型圈，适用于微型液压装置、仪器仪表与传感器接口。',
+descEn: 'Micro cross-section NBR O-ring for miniature hydraulic devices, instruments and sensor ports.',
+price: 0.2,
+currency: 'USD',
+image: '⭕'
+},
+{
+id: 50019,
+sku: 'DJ7020-CS1.0',
+category: 'o-ring',
+brand: 'seals-mall',
+nameZh: 'O型圈 截面直径1mm 丁腈橡胶 黑色 70ShoreA DJ7020',
+nameEn: 'O-Ring CS 1.0 mm NBR Black 70ShoreA DJ7020',
+material: 'NBR 70 Shore A (black)',
+temp: '-30℃ ~ +100℃',
+pressure: 'Static sealing for oils and fuels',
+size: 'CS 1.0 mm',
+descZh: '极细截面丁腈O型圈，用于超小沟槽和精密组件，对装配精度有较高要求。',
+descEn: 'Ultra-thin cross-section NBR O-ring for very small grooves and precision components requiring high assembly accuracy.',
+price: 0.18,
+currency: 'USD',
+image: '⭕'
+}
+];
+
+// Cart state
+let cart = [];
+let currentLanguage = 'en';
+
+// Initialize
+function init() {
+renderProducts('all');
+updateCartUI();
+}
+
+// Render products
+function renderProducts(category) {
+const filtered = category === 'all'
+? products
+: products.filter(p => p.category === category);
+
+const grid = document.getElementById('productsGrid');
+grid.innerHTML = filtered.map(product => {
+const name = product[`name${currentLanguage.toUpperCase().replace('EN', 'En').replace('ZH', 'Zh').replace('DE', 'De').replace('JA', 'Ja').replace('ES', 'Es')}`] || product.nameEn;
+return `
+<div class="product-card">
+<div class="product-image">${product.image}</div>
+<div class="product-info">
+<div class="product-name">${name}</div>
+<div class="product-specs">
+${product.material || ''} · ${product.size || ''}
+</div>
+<div class="product-price">$${product.price.toFixed(2)}</div>
+<div class="product-actions">
+<input type="number" class="qty-selector" value="1" min="1" id="qty-${product.id}">
+<button class="btn btn-primary" onclick="addToCart(${product.id})">Add</button>
+</div>
+</div>
+</div>
+`;
+}).join('');
+}
+
+// Filter products
+function filterProducts(category) {
+document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+event.target.classList.add('active');
+renderProducts(category);
+}
+
+// Add to cart
+function addToCart(productId) {
+const product = products.find(p => p.id === productId);
+const qty = parseInt(document.getElementById(`qty-${productId}`).value);
+
+const existing = cart.find(item => item.id === productId);
+if (existing) {
+existing.qty += qty;
+} else {
+cart.push({ ...product, qty });
+}
+
+updateCartUI();
+toggleCart();
+}
+
+// Update cart UI
+function updateCartUI() {
+const count = cart.reduce((sum, item) => sum + item.qty, 0);
+document.getElementById('cartCount').textContent = count;
+
+const itemsHtml = cart.length === 0
+? `<div class="empty-state">${translations[currentLanguage].emptyCart}</div>`
+: cart.map(item => `
+<div class="cart-item">
+<div class="cart-item-info">
+<strong>${item[`name${currentLanguage.toUpperCase().replace('EN', 'En').replace('ZH', 'Zh').replace('DE', 'De').replace('JA', 'Ja').replace('ES', 'Es')}`] || item.nameEn}</strong>
+<div>$${item.price} × ${item.qty}</div>
+</div>
+<span class="cart-item-remove" onclick="removeFromCart(${item.id})">×</span>
+</div>
+`).join('');
+
+document.getElementById('cartItems').innerHTML = itemsHtml;
+
+const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+}
+
+// Remove from cart
+function removeFromCart(productId) {
+cart = cart.filter(item => item.id !== productId);
+updateCartUI();
+}
+
+// Toggle cart
+function toggleCart() {
+document.getElementById('cartSidebar').classList.toggle('open');
+}
+
+// Change language
+function changeLanguage() {
+currentLanguage = document.getElementById('langSelect').value;
+
+const t = translations[currentLanguage];
+document.getElementById('productsTitle').textContent = t.productsTitle;
+document.getElementById('cartTitle').textContent = t.cartTitle;
+document.getElementById('totalLabel').textContent = t.totalLabel;
+document.getElementById('checkoutTitle').textContent = t.checkoutTitle;
+document.getElementById('nameLabel').textContent = t.nameLabel;
+document.getElementById('emailLabel').textContent = t.emailLabel;
+document.getElementById('addressLabel').textContent = t.addressLabel;
+document.getElementById('phoneLabel').textContent = t.phoneLabel;
+document.getElementById('payBtn').textContent = t.payBtn;
+document.getElementById('footerText').textContent = t.footerText;
+
+renderProducts('all');
+updateCartUI();
+}
+
+// Checkout
+function checkout() {
+if (cart.length === 0) {
+alert('Please add items to cart');
+return;
+}
+document.getElementById('checkoutModal').classList.add('open');
+}
+
+// Close modal
+function closeModal() {
+document.getElementById('checkoutModal').classList.remove('open');
+}
+
+// Handle checkout with Stripe（后面会用 PayPal 替换）
+async function handleCheckout(e) {
+e.preventDefault();
+const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0) * 100;
+alert(`Total: $${(total/100).toFixed(2)}\n\nPayment integration will be added soon.`);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
